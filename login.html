@@ -18,12 +18,22 @@
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="banner-container">
+      <img class="banner-login" src="./img/login.png">
+    </div>
+   <div class="container">
+      <form class="form-login">
+        <h4><b>Inicio de sesión</b></h4>
+        <p class="p-login">Email</p>
+        <input type="email" placeholder="Email" class="input-login" id="log-email">
+        <p class="p-login">Contraseña</p>
+        <input type="password" placeholder="Contraseña" class="input-login" id="log-pass">
+        <br><br>
+        <button id="loginButton">Ingresar</button>
+      </form>
     </div>
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
