@@ -22,6 +22,14 @@ nav a {
   user-select: none;
 }
 
+@media screen and (max-width: 767px) {
+
+.banner-container{
+  width: auto;
+}
+
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
@@ -191,14 +199,9 @@ a.custom-card:hover {
 
 /* css log in */
 
-.img-login{
-  height: 20px;
-  margin-bottom: 5px;
-  margin-left: 2px;
-}
-
 .banner-container{
   height: 300px;
+  width: 100vw;
 }
 
 .banner-login{
@@ -208,7 +211,7 @@ a.custom-card:hover {
   display: block;
 }
 
-.form-login{
+#form-login{
   width: 21rem;
   height: 23rem;
   border-radius: 10px;

@@ -18,7 +18,7 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"
                     <div class="col-3">
                         <img src="`+data.products[i].image+`" class="img-thumbnail">
                     </div>
-                    <div class="col-7">
+                    <div class="col-8">
                     <h4>${data.products[i].name} - ${data.products[i].currency}
                         ${data.products[i].cost}</h4> 
                     <p> ${data.products[i].description}</p>

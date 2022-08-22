@@ -2,20 +2,14 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('Se cargó el DOM')
 
     let user = document.getElementById('log-email');
-        user.addEventListener('keypress', function(){
-        });
-    
     let pass = document.getElementById('log-pass');
-        pass.addEventListener('keypress', function(){
-        });
-    
-    let alert = "";    
 
-    let button = document.getElementById('loginButton')
-    button.addEventListener('click', function(event){
-        
+    let button = document.getElementById('form-login')
+    button.addEventListener('submit', function(event){
+        event.preventDefault();
+
         if(user.value.length > 0 && pass.value.length > 0){
-            event.preventDefault();
+            sessionStorage.setItem('usuario', user)
             window.location.href = 'index.html'
         } else {
             event.preventDefault();

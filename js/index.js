@@ -11,4 +11,21 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    //-con esta funcion tomo el id close del index y cuando se hace click elimina
+    //del session storage el usuario, haciendo que rediriga al login.
+    //-uso session y no local para que si se cierra la ventana se borren
+    //automaticamente el dato de usuario
+    document.getElementById('close').addEventListener('click',function(e){
+        e.preventDefault();
+        sessionStorage.removeItem('usuario');
+        window.location.href = 'login.html';
+    })
+
+    let user = sessionStorage.getItem('usuario')
+    if (user==null){
+       alert("No estas logueado, solucionemos eso :)")
+       window.location.href='login.html';
+    }
+
 });
