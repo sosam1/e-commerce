@@ -41,9 +41,24 @@
       <h2 class="text-center">Productos</h2>
       <h3 class="text-center subtitle">Verás aquí todos los productos de la categoría Autos</h3>
     </div>
-    <div id="category-products" class="list-group">
 
-    </div>
+   
+      <div class="filter btn-group text-end"> 
+        <button id="price" class="btn-filtro btn btn-light izq-btn">Precio</button>
+        <button id="relevance" class="btn-filtro btn btn-light izq-btn">Relevancia</button>
+
+        <p class="price">Precio</p>
+        <input class="rangos" id="min" type="number" min="0" placeholder="min.">    
+        <input class="rangos" id="max" type="number" min="0" placeholder="máx.">
+        <button id="btnFiltro" class="btn-filtro btn btn-light">Filtrar</button>
+        <a href="#" id="clean">Limpiar</a>
+      </div>
+
+      <div id="category-products" class="list-group">
+
+      </div>  
+    
+    
   </main>
   <footer class="text-muted">
     <div class="container">

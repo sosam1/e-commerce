@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
         event.preventDefault();
 
         if(user.value.length > 0 && pass.value.length > 0){
-            sessionStorage.setItem('usuario', user)
+            sessionStorage.setItem('usuario', user.value);
             window.location.href = 'index.html'
         } else {
             event.preventDefault();
