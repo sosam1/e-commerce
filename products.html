@@ -37,15 +37,16 @@
     </div>
   </nav>
   <main class="pb-5 container">
-    <div class="container cont-products">
-      <h2 class="text-center">Productos</h2>
-      <h3 class="text-center subtitle">Verás aquí todos los productos de la categoría Autos</h3>
+    <div id=mensaje class="container cont-products">
+  
     </div>
 
    
       <div class="filter btn-group text-end"> 
-        <button id="price" class="btn-filtro btn btn-light izq-btn">Precio</button>
+        <button id="price" class="btn-filtro btn btn-light izq-btn">Precio min-max</button>
+        <button id="price-desc" class="btn-filtro btn btn-light izq-btn">Precio max-Min</button>
         <button id="relevance" class="btn-filtro btn btn-light izq-btn">Relevancia</button>
+        <button id="relevance-asc" class="btn-filtro btn btn-light izq-btn">Relevancia min-max</button>
 
         <p class="price">Precio</p>
         <input class="rangos" id="min" type="number" min="0" placeholder="min.">    

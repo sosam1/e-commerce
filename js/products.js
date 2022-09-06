@@ -30,22 +30,11 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
         }
 
         let price = document.getElementById('price')
+        let priceDesc = document.getElementById('price-desc')
         let relev = document.getElementById('relevance')
+        let relevAsc = document.getElementById('relevance-asc')
         let arrayProduct = data.products;
-
-        //ordeno por precio
-        price.addEventListener('click', function(){
-
-            arrayProduct = arrayProduct.sort(function(a, b){
-
-                if(a.cost < b.cost){
-                    return -1;
-                }
-                if(a.cost > b.cost){
-                    return 1;
-                }
-                    return 0;
-            })
+        function desplegar(){
 
             divList.innerHTML = " "
 
@@ -67,6 +56,43 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
                     </div>
             ` 
             }
+        }
+
+        //ordeno por precio acendente
+        price.addEventListener('click', function(){
+
+            arrayProduct = arrayProduct.sort(function(a, b){
+
+                if(a.cost < b.cost){
+                    return -1;
+                }
+                if(a.cost > b.cost){
+                    return 1;
+                }
+                    return 0;
+            })
+
+             desplegar();
+                         
+        })
+
+        //precio descendente
+
+        priceDesc.addEventListener('click', function(){
+
+            arrayProduct = arrayProduct.sort(function(a, b){
+
+                if(a.cost > b.cost){
+                    return -1;
+                }
+                if(a.cost < b.cost){
+                    return 1;
+                }
+                    return 0;
+            })
+
+                desplegar();
+                
         })
         // ahora ordeno por relevancia
         relev.addEventListener('click', function(){
@@ -82,26 +108,23 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
                     return 0;
             })
 
-            divList.innerHTML = " "
+                desplegar();
+        })
 
-            for(i=0; i<arrayProduct.length; i++){
+        relevAsc.addEventListener('click', function(){
 
-            divList.innerHTML += `
-            <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="`+arrayProduct[i].image+`" class="img-thumbnail">
-                    </div>
-                    <div class="col-8">
-                    <h4>${arrayProduct[i].name} - ${arrayProduct[i].currency}
-                        ${arrayProduct[i].cost}</h4> 
-                    <p> ${arrayProduct[i].description}</p>
-                    </div>
-                    <div class="col d-flex w-100 justify-content-between">
-                        <small class="text-muted">${arrayProduct[i].soldCount} Vendidos</small>
-                    </div>
-            ` 
-            }
+            arrayProduct = arrayProduct.sort(function(a, b){
+
+                if(a.soldCount < b.soldCount){
+                    return -1;
+                }
+                if(a.soldCount > b.soldCount){
+                    return 1;
+                }
+                    return 0;
+            })
+
+            desplegar();
 
         })
         //filtro por rango
@@ -112,8 +135,6 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
 
         let min = document.getElementById('min').value;
         let max = document.getElementById('max').value;
-        console.log(min)
-        console.log(max)
         newFilter = arrayProduct.filter(function(product){
 
                 if(min !== "" && min !== undefined){
@@ -170,30 +191,19 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
                                 return 1;
                             }
                                 return 0;
-                        })
-            
-                        divList.innerHTML = " "
-            
-                        for(i=0; i<arrayProduct.length; i++){
-            
-                        divList.innerHTML += `
-                        <div class="list-group-item list-group-item-action">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="`+arrayProduct[i].image+`" class="img-thumbnail">
-                                </div>
-                                <div class="col-8">
-                                <h4>${arrayProduct[i].name} - ${arrayProduct[i].currency}
-                                    ${arrayProduct[i].cost}</h4> 
-                                <p> ${arrayProduct[i].description}</p>
-                                </div>
-                                <div class="col d-flex w-100 justify-content-between">
-                                    <small class="text-muted">${arrayProduct[i].soldCount} Vendidos</small>
-                                </div>
-                        ` 
-                        }
+                        })    
+                        desplegar();
                        
                     })
         })
 
+        let mensaje = document.getElementById('mensaje')
+        console.log(data.catName)
+        let catName = data.catName;
+        mensaje.innerHTML += `
+
+            <h2 class="text-center">Productos</h2>
+            <h3 class="text-center subtitle">Verás aquí todos los productos de la categoría `+catName+`</h3>
+
+        `
     }) 

@@ -278,10 +278,12 @@ input[type=number] { -moz-appearance:textfield; }
 
 .price{
   margin: auto;
-  margin-left: 650px;
+  margin-left: 400px;
 }
 
 .izq-btn{
   margin-right: 20px;
   margin-bottom: 10px;
+  width: 100px;
+  height: 60px;
 }
