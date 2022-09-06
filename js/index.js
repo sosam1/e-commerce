@@ -26,14 +26,17 @@ document.addEventListener("DOMContentLoaded", function(){
     }) */
 
     //con esto creo alerta para que si o si se loguee
+
+        
     let user = sessionStorage.getItem('usuario')
+
     if (user==null){
-       alert("No estas logueado, solucionemos eso :)")
-       window.location.href='login.html';
-    }
+        alert("No estas logueado, solucionemos eso :)")
+        window.location.href='login.html';
+    }  
 
     let userNav = document.getElementById('nav-list');
-    userNav.innerHTML += `
+        userNav.innerHTML += `
 
         <li class="nav-item">
             <a class="nav-link" href="sell.html">`+ user +`</a>

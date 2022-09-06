@@ -20,7 +20,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul id="nav-list" class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
@@ -29,8 +29,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
           </li>
         </ul>
       </div>
@@ -41,25 +39,25 @@
   
     </div>
 
-   
-      <div class="filter btn-group text-end"> 
-        <button id="price" class="btn-filtro btn btn-light izq-btn">Precio min-max</button>
-        <button id="price-desc" class="btn-filtro btn btn-light izq-btn">Precio max-Min</button>
-        <button id="relevance" class="btn-filtro btn btn-light izq-btn">Relevancia</button>
-        <button id="relevance-asc" class="btn-filtro btn btn-light izq-btn">Relevancia min-max</button>
-
-        <p class="price">Precio</p>
-        <input class="rangos" id="min" type="number" min="0" placeholder="min.">    
-        <input class="rangos" id="max" type="number" min="0" placeholder="máx.">
-        <button id="btnFiltro" class="btn-filtro btn btn-light">Filtrar</button>
+      <div class="filter btn-group text-end">
+        <p class="p-orden">Ordenar por:</p> 
+        <button id="price" class="btn btn-light boton" for="sortByCount"><b>$</b><i class="fas fa-sort-amount-up mr-1"></i></button>
+        <button id="price-desc" class="btn btn-light boton" for="sortByCount"><b>$</b><i class="fas fa-sort-amount-down mr-1"></i></button>
+        <button id="relevance" class="btn-filtro btn btn-light izq-btn boton">Más vendidos <i class="fas fa-sort-amount-down mr-1"></i></button>
+      </div>
+      
+      <div class="filter btn-group text-end">
+        <p class="p-price">Precio</p>
+        <input class="rangos form-control" id="min" type="number" min="0" placeholder="min.">    
+        <input class="rangos form-control" id="max" type="number" min="0" placeholder="máx.">
+        <button id="btnFiltro" class="btn btn-light">Filtrar</button>
         <a href="#" id="clean">Limpiar</a>
       </div>
 
       <div id="category-products" class="list-group">
 
       </div>  
-    
-    
+     
   </main>
   <footer class="text-muted">
     <div class="container">

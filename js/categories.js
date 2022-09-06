@@ -139,5 +139,22 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
         showCategoriesList();
+
     });
+
+    let user = sessionStorage.getItem('usuario')
+
+    if (user==null){
+        alert("No estas logueado, solucionemos eso :)")
+        window.location.href='login.html';
+     }  
+
+    let userNav = document.getElementById('nav-list');
+        userNav.innerHTML += `
+
+            <li class="nav-item">
+                <a class="nav-link" href="sell.html">`+ user +`</a>
+            </li>
+        
+        `
 });

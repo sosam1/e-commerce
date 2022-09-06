@@ -1,5 +1,10 @@
 let cat = localStorage.getItem("catID")
 const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json"
+
+function setProductId(idProd){
+    localStorage.setItem('prodID', idProd);
+    window.location = "product-info.html"
+}
     fetch(url)
     .then(response => response.json())
     .then(data =>{
@@ -13,7 +18,7 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
             console.log(data.products[i].name)
 
             divList.innerHTML += `
-            <div class="list-group-item list-group-item-action">
+            <div onclick="setProductId(${data.products[i].id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="`+data.products[i].image+`" class="img-thumbnail">
@@ -110,23 +115,6 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
 
                 desplegar();
         })
-
-        relevAsc.addEventListener('click', function(){
-
-            arrayProduct = arrayProduct.sort(function(a, b){
-
-                if(a.soldCount < b.soldCount){
-                    return -1;
-                }
-                if(a.soldCount > b.soldCount){
-                    return 1;
-                }
-                    return 0;
-            })
-
-            desplegar();
-
-        })
         //filtro por rango
         let filter = document.getElementById('btnFiltro');
         let newFilter = []
@@ -197,8 +185,23 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
                     })
         })
 
-        let mensaje = document.getElementById('mensaje')
-        console.log(data.catName)
+        let user = sessionStorage.getItem('usuario')
+
+         if (user==null){
+        alert("No estas logueado, solucionemos eso :)")
+        window.location.href='login.html';
+             }  
+
+        let userNav = document.getElementById('nav-list');
+        userNav.innerHTML += `
+
+        <li class="nav-item">
+            <a class="nav-link" href="sell.html">`+ user +`</a>
+        </li>
+    
+        `
+
+        let mensaje = document.getElementById('mensaje');
         let catName = data.catName;
         mensaje.innerHTML += `
 
@@ -206,4 +209,5 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/"+cat+".json
             <h3 class="text-center subtitle">Verás aquí todos los productos de la categoría `+catName+`</h3>
 
         `
+        console.log(data.products[1].id)
     }) 

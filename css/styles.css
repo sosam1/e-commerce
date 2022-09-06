@@ -250,18 +250,25 @@ a.custom-card:hover {
 
 /* css products.html */
 
-
 .cont-products{
   margin-top: 50px;
 }
 
-.subtitle{
-  margin-bottom: 40px;
+.rangos{
+  width: 100px;
+  height: 40px;
+  margin: auto;
+  margin-left: 15px;
 }
 
-.rangos{
-  margin: 10px;
-  width: 100px;
+.p-orden{
+  margin: auto;
+  margin-left: 920px;
+}
+
+.p-price{
+  margin: auto;
+  margin-left: 850px;
 }
 /* eliminar flechas de los input number*/
 input[type=number]::-webkit-inner-spin-button, 
@@ -278,12 +285,13 @@ input[type=number] { -moz-appearance:textfield; }
 
 .price{
   margin: auto;
-  margin-left: 400px;
+  margin-left: 850px;
 }
 
-.izq-btn{
-  margin-right: 20px;
-  margin-bottom: 10px;
-  width: 100px;
-  height: 60px;
+.boton{
+  margin: 10px;
+}
+
+#btnFiltro{
+  margin: 20px;
 }
