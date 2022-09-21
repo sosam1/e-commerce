@@ -19,15 +19,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //por ahora en pausa el boton de cerrar sesion
 
-    /* document.getElementById('close').addEventListener('click',function(e){
+     document.getElementById('close').addEventListener('click',function(e){
         e.preventDefault();
         sessionStorage.removeItem('usuario');
         window.location.href = 'login.html';
-    }) */
-
-    //con esto creo alerta para que si o si se loguee
-
-        
+    }) 
+ 
     let user = sessionStorage.getItem('usuario')
 
     if (user==null){
@@ -35,13 +32,7 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location.href='login.html';
     }  
 
-    let userNav = document.getElementById('nav-list');
-        userNav.innerHTML += `
-
-        <li class="nav-item">
-            <a class="nav-link" href="sell.html">`+ user +`</a>
-        </li>
-    
-    `
+    let userNav = document.getElementById('nav-user')
+    userNav.innerHTML = user
     
 });

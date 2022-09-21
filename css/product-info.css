@@ -39,7 +39,7 @@ body{
 }
 
 .title{
-    margin: 10px;
+    margin-top: 20px;
 }
 
 .description{
@@ -73,6 +73,23 @@ form{
     display: flex;
     justify-content: center;
 }
+
+
+#related-products{
+    margin-top: 150px;
+    margin-left: 25px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+    border-radius: 12px;
+    display: inline-block;
+    text-align: center;
+}
+
+#related-products img{
+    margin: 15px;
+}
+
+
 
 /*comentarios */
 

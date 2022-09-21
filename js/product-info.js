@@ -14,7 +14,6 @@ let user = sessionStorage.getItem('usuario')
     
     `
 
-let borrar = document.getElementById('borrar');
 let prodID = localStorage.getItem("prodID");
 let URL = "https://japceibal.github.io/emercado-api/products/"+prodID+".json";
 let urlComments = "https://japceibal.github.io/emercado-api/products_comments/"+prodID+".json"
@@ -26,6 +25,7 @@ fetch(URL)
 .then(response => response.json())
 .then(data =>{
 
+        console.log(data.relatedProducts.length)
         productDescription += `
                 <h2 class="title">${data.name}</h2>
                 <hr>
@@ -36,7 +36,6 @@ fetch(URL)
                     <button id="button">Agregar al carrito <i class="bi bi-cart3"></i> </button>
                 </form>        
         `  
-        
 
         for(let i=0; i<data.images.length; i++){
             info+=`
@@ -47,17 +46,49 @@ fetch(URL)
         cardInfo.innerHTML = productDescription;
         container.innerHTML = info;
 
+        let related = document.getElementById('related-products')
+        let relatedInfo = "";
+        relatedInfo += `
+                <h4>Productos relacionados</h4>
+        `
+        for(let i=0; i<data.relatedProducts.length; i++){
+            relatedInfo +=  `
+                <h5>${data.relatedProducts[i].name}</h5>
+                <a href=""><img id="related`+i+`" class="product-info-img" src="${data.relatedProducts[i].image}"></a>
+            `
+        }
 
+        related.innerHTML = relatedInfo;
+        cardInfo.appendChild(related)
+
+        let relatedProduct0 = document.getElementById('related0');
+        relatedProduct0.addEventListener('click', function(){
+            localStorage.prodID = data.relatedProducts[0].id
+        })
         
+        let relatedProduct1 = document.getElementById('related1');
+        relatedProduct1.addEventListener('click', function(){
+            localStorage.prodID = data.relatedProducts[1].id
+        })
+
+    
+  
         //ahora inserto los comentarios
         
 fetch(urlComments)
 .then(response => response.json())
 .then(data =>{
-                
+            let commentTitle = document.createElement('div');
+            container.appendChild(commentTitle)
+            commentTitle.setAttribute('class', 'title')
+            commentTitle.innerHTML = `
+                <h3>Comentarios</h3>
+            `
 
             for(let comentario of data){
-                let commentContainer = `
+                let commentContainer = ""
+                
+                commentContainer += `
 
                 <div class="comment">
                    <h5><b>${comentario.user}</b> ${comentario.dateTime} <span id="${comentario.user}"></span></h5>
