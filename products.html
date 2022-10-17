@@ -30,6 +30,18 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+
+          <div class="dropdown">
+            <button id="nav-user" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              
+            </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="./cart.html">Mi carrito</a></li>
+                <li><a class="dropdown-item" href="./my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" id="close" href="#">Cerrar sesión</a></li>
+              </ul>
+          </div>
+
         </ul>
       </div>
     </div>
@@ -47,6 +59,7 @@
       </div>
       
       <div class="filter btn-group text-end">
+        <input id="search" class="form-control" type="search">
         <p class="p-price">Precio</p>
         <input class="rangos form-control" id="min" type="number" min="0" placeholder="min.">    
         <input class="rangos form-control" id="max" type="number" min="0" placeholder="máx.">

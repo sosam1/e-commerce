@@ -19,12 +19,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //por ahora en pausa el boton de cerrar sesion
 
-     document.getElementById('close').addEventListener('click',function(e){
-        e.preventDefault();
-        sessionStorage.removeItem('usuario');
-        window.location.href = 'login.html';
-    }) 
- 
     let user = sessionStorage.getItem('usuario')
 
     if (user==null){
@@ -32,7 +26,13 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location.href='login.html';
     }  
 
+    document.getElementById('close').addEventListener('click',function(e){
+        e.preventDefault();
+        sessionStorage.removeItem('usuario');
+        window.location.href = 'login.html';
+    }) 
+    
     let userNav = document.getElementById('nav-user')
-    userNav.innerHTML = user
+        userNav.innerHTML = user
     
 });

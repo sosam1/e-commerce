@@ -1,0 +1,83 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;    
+}
+
+.header{
+    text-align: center;
+    margin-top: 2%;
+}
+
+.subtitle{
+    margin-top: 100px;
+    margin-left: 20%;
+}
+
+.table-cart th{
+    width: 20%;
+}
+
+.table-cart{
+    margin: auto;
+    margin-top: 50px;
+}
+
+.table-cart thead tr th{
+    border-bottom: solid 1px;
+    padding: 10px;
+}
+
+input{
+    margin-right: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+.input-dir{
+    width: 300px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.span{
+    margin-right: 276px;
+}
+
+.hola{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.img-cart{
+    width: 150px;
+    margin: 10px;
+}
+
+.costos-title{
+    margin-left: 20%;
+}
+
+.subtotal{
+    margin-left: 20%;
+}
+
+.p-subtitle{
+    font-size: 20px;
+}
+
+.subtotal{
+    border: solid 1px #4d4b4b;
+    margin-top: 0.7px;
+    padding: 10px;
+    width: 50%;
+}
+
+.valor-costo{
+    float: right;
+}
+
+.forma-pago{
+    margin-left: 20%;
+}

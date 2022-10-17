@@ -5,14 +5,14 @@ let user = sessionStorage.getItem('usuario')
         window.location.href='login.html';
     }  
 
-    let userNav = document.getElementById('nav-list');
-        userNav.innerHTML += `
-
-        <li class="nav-item">
-            <a class="nav-link" href="sell.html">`+ user +`</a>
-        </li>
+    document.getElementById('close').addEventListener('click',function(e){
+        e.preventDefault();
+        sessionStorage.removeItem('usuario');
+        window.location.href = 'login.html';
+    }) 
     
-    `
+    let userNav = document.getElementById('nav-user')
+        userNav.innerHTML = user
 
 let prodID = localStorage.getItem("prodID");
 let URL = "https://japceibal.github.io/emercado-api/products/"+prodID+".json";
@@ -33,7 +33,7 @@ fetch(URL)
                 <h5 class="sold">vendidos: ${data.soldCount}</h5>
                 <h2 class="currency-price">${data.currency}`+" "+`${data.cost}</h2>
                 <form>
-                    <button id="button">Agregar al carrito <i class="bi bi-cart3"></i> </button>
+                    <button id="button">Agregar al carrito <i class="bi bi-cart3"></i></button>
                 </form>        
         `  
 
@@ -188,5 +188,12 @@ fetch(urlComments)
 
             })
         })        
+
+        let cart = document.getElementById('button');
+        cart.addEventListener('click', function(e){
+            e.preventDefault();
+            window.location.href='cart.html';
+        })
+
 })
 

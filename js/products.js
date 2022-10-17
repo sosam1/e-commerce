@@ -8,14 +8,13 @@ function setProductId(idProd){
     fetch(url)
     .then(response => response.json())
     .then(data =>{
-        console.log(data);
-        console.log(data.products[0]);
+       
 
         let divList = document.getElementById('category-products')
 
         for(i=0; i<data.products.length; i++){
 
-            console.log(data.products[i].name)
+            
 
             divList.innerHTML += `
             <div onclick="setProductId(${data.products[i].id})" class="list-group-item list-group-item-action cursor-active">
@@ -192,14 +191,14 @@ function setProductId(idProd){
         window.location.href='login.html';
              }  
 
-        let userNav = document.getElementById('nav-list');
-        userNav.innerHTML += `
-
-        <li class="nav-item">
-            <a class="nav-link" href="sell.html">`+ user +`</a>
-        </li>
-    
-        `
+             document.getElementById('close').addEventListener('click',function(e){
+                e.preventDefault();
+                sessionStorage.removeItem('usuario');
+                window.location.href = 'login.html';
+            }) 
+            
+            let userNav = document.getElementById('nav-user')
+                userNav.innerHTML = user
 
         let mensaje = document.getElementById('mensaje');
         let catName = data.catName;
@@ -209,5 +208,34 @@ function setProductId(idProd){
             <h3 class="text-center subtitle">Verás aquí todos los productos de la categoría `+catName+`</h3>
 
         `
-        console.log(data.products[1].id)
+        console.log(data)
+        let searchbar = document.getElementById('search');
+        searchbar.addEventListener('keyup', function(){
+            console.log(searchbar.value)
+            
+            for(let i=0; i<data.products.length; i++){
+                if(searchbar.value == data.products[i].name.toLowerCase()){
+                    
+                    divList.innerHTML = `
+                    <div onclick="setProductId(${data.products[i].id})" class="list-group-item list-group-item-action cursor-active">
+                    <div class="row">
+                    <div class="col-3">
+                        <img src="`+data.products[i].image+`" class="img-thumbnail">
+                    </div>
+                    <div class="col-8">
+                    <h4>${data.products[i].name} - ${data.products[i].currency}
+                        ${data.products[i].cost}</h4> 
+                    <p> ${data.products[i].description}</p>
+                    </div>
+                    <div class="col d-flex w-100 justify-content-between">
+                        <small class="text-muted">${data.products[i].soldCount} Vendidos</small>
+                    </div>
+                 ` 
+                } else if(searchbar.value === ""){
+                    
+                    
+                }
+            }
+        })
+        
     }) 

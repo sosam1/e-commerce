@@ -233,7 +233,6 @@ a.custom-card:hover {
   border-radius: 4px;
   width: 250px;
   height: 40px;
-  margin-top: 1rem;
 }
 
 .input-login{
@@ -242,6 +241,7 @@ a.custom-card:hover {
   border-radius: 4px;
   border: 1px solid;
   padding-left: 14px;
+  margin: auto;
 }
 
 #loginButton:hover{
@@ -268,7 +268,7 @@ a.custom-card:hover {
 
 .p-price{
   margin: auto;
-  margin-left: 850px;
+  margin-left: 450px;
 }
 /* eliminar flechas de los input number*/
 input[type=number]::-webkit-inner-spin-button, 
@@ -285,7 +285,7 @@ input[type=number] { -moz-appearance:textfield; }
 
 .price{
   margin: auto;
-  margin-left: 850px;
+  
 }
 
 .boton{
@@ -294,6 +294,12 @@ input[type=number] { -moz-appearance:textfield; }
 
 #btnFiltro{
   margin: 20px;
+}
+
+#search{
+  height: 40px;
+  width: 400px;
+  margin: auto;
 }
 
 /* producto info */

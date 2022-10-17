@@ -149,12 +149,12 @@ document.addEventListener("DOMContentLoaded", function(e){
         window.location.href='login.html';
      }  
 
-    let userNav = document.getElementById('nav-list');
-        userNav.innerHTML += `
-
-            <li class="nav-item">
-                <a class="nav-link" href="sell.html">`+ user +`</a>
-            </li>
-        
-        `
+     document.getElementById('close').addEventListener('click',function(e){
+        e.preventDefault();
+        sessionStorage.removeItem('usuario');
+        window.location.href = 'login.html';
+    }) 
+    
+    let userNav = document.getElementById('nav-user')
+        userNav.innerHTML = user
 });
