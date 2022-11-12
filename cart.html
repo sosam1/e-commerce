@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/cart.css">
 </head>
@@ -50,6 +52,9 @@
 
       <div class="header">
            <h1>Carrito de compras</h1>
+           <div id="mensajeExito" class="alert alert-success" hidden role="alert">
+            ¡Su compra se realizó con exito!
+          </div>
       </div>  
 
       <div class="container-cart">
@@ -65,6 +70,7 @@
                     <th scope="col">Costo Unitario</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Subtotal</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody id="tbody">
@@ -75,36 +81,42 @@
               </table> 
 
         <div class="send-information subtitle">
-            <h3 class="hola">Tipo de envío</h3>
+            <h3 class="envio-title">Tipo de envío</h3>
 
-            <form action="">
+            <form action="cart.html" method="get" onsubmit="pagoExito()">
               <label for ="datos">
-                <input type="radio" name="tipoEnvio"><span>Premium 2 a 5 días (15%)</span>
+                <label>
+                  <input type="radio" name="tipoEnvio" id="envio" required><span>Premium 2 a 5 días (15%)</span>
+                </label>
                   <br>
-                <input type="radio" name="tipoEnvio"><span>Express 5 a 8 días (7%)</span>
+                <label>
+                  <input type="radio" name="tipoEnvio" id="express"><span>Express 5 a 8 días (7%)</span>
+                </label>  
                   <br>
-                <input type="radio" name="tipoEnvio"><span>Standar 12 a 15 días (5%)</span>
+                <label>
+                  <input type="radio" name="tipoEnvio" id="standar"><span>Standar 12 a 15 días (5%)</span>
+                </label>
+                <p id="mensaje-envio"></p>  
 
-                <h3 class="hola">Dirección de envío</h3>
+                <h3>Dirección de envío</h3>
 
                 <span class="span">Calle</span>
                 <span>Número</span>
                 <br>
-                <input class="input-dir" type="text" required>
-                <input class="input-dir" type="number" required>
+                <input class="input-dir" type="text" id="calle" required>
+                <input class="input-dir" type="number" id="numero" required>
 
                 <br>
                 <span>Esquina</span>
                 <br>
-                <input class="input-dir esq" type="text" required>
+                <input class="input-dir" type="text" id="esquina" required>
 
-              </label>
-            </form>
+              </label> 
         </div>     
         
         <hr>
 
-        <div class="costos">
+        <div class="costos list-group">
           <h3 class="costos-title">Costos</h3>
           
           <div class="subtotal">
@@ -115,7 +127,7 @@
               </div>
 
               <div class="col-6">
-                <p class="valor-costo" id="subtotal-costo">USD </p>
+                <p class="valor-costo" id="subtotal-costo">USD</p>
               </div>
             </div>    
           </div>
@@ -154,14 +166,49 @@
 
         <div class="forma-pago">
           <h3>Formas de pago</h3>
-          <p>Seleccione su forma de pago <a href="#">Seleccionar</a></p> 
+          <p>Seleccione su forma de pago <a id="modal-open" data-bs-toggle="modal" href="#exampleModalToggle">Seleccionar</a></p>
+          <p id="mensaje-modal"></p>
+          <button type="submit" id="comprar" class="btn btn-success">Comprar</button>
         </div>
-
       </div>
-      
 
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Forma de pago</h5>
+            </div>
+            <div class="modal-body">
+              <input id="credito" type="radio" name="pago" required value="credito">
+              <span>Tarjeta de crédito</span>
+              <hr>
+              <span>Número de Tarjeta</span>
+              <span class="cod-seg-p">Código de seg.</span> 
+              <br>
+              <input id="num-card" class="input-largo" required type="number">
+              <input id="cod-seg" class="input-corto" required type="number">
+              <br>
+              <span>Vencimmiento (MM/AA)</span> 
+              <br>
+              <input id="vto" class="input-corto" required type="number">
+              <br>
+              <hr>
+              <input id="banco" type="radio" name="pago" value="banco">
+              <span>Transferencia bancaria</span>
+              <hr>
+              <span>Número de cuenta</span> 
+              <br>
+              <input id="num-cuenta" class="input-largo" required type="number">
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-bs-dismiss="modal" id="save-button" class="btn btn-primary">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+    </form> 
 
-      
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -181,6 +228,7 @@
       <div></div>
     </div>
   </div>
+  
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>

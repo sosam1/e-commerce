@@ -25,6 +25,25 @@ fetch(URL)
 .then(response => response.json())
 .then(data =>{
 
+        let carrito = []
+
+        function agregarAlCarrito(){
+
+            let articulo = JSON.parse(localStorage.getItem('carrito')) || [];
+            articulo = {
+                cost: data.cost,
+                currency: data.currency,
+                images: data.images[0],
+                name: data.name
+            };
+
+            carrito.push(articulo)
+
+            let articuloString = JSON.stringify(carrito)
+
+            localStorage.setItem("carrito", articuloString)
+        }
+
         console.log(data.relatedProducts.length)
         productDescription += `
                 <h2 class="title">${data.name}</h2>
@@ -33,15 +52,45 @@ fetch(URL)
                 <h5 class="sold">vendidos: ${data.soldCount}</h5>
                 <h2 class="currency-price">${data.currency}`+" "+`${data.cost}</h2>
                 <form>
-                    <button id="button">Agregar al carrito <i class="bi bi-cart3"></i></button>
+                    <button id="button" onclick="${agregarAlCarrito()}">Agregar al carrito <i class="bi bi-cart3"></i></button>
                 </form>        
         `  
 
-        for(let i=0; i<data.images.length; i++){
+        /* for(let i=0; i<data.images.length; i++){
             info+=`
             <img id="img`+i+`" class="product-info-img" src="${data.images[i]}">
             `
-        }
+        } */
+
+        info += `
+
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="${data.images[0]}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${data.images[1]}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${data.images[2]}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${data.images[3]}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+        `
+
 
         cardInfo.innerHTML = productDescription;
         container.innerHTML = info;
@@ -187,6 +236,7 @@ fetch(urlComments)
                 }  
 
             })
+
         })        
 
         let cart = document.getElementById('button');
@@ -194,6 +244,10 @@ fetch(urlComments)
             e.preventDefault();
             window.location.href='cart.html';
         })
+
+        console.log(data)
+
+       
 
 })
 

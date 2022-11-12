@@ -214,7 +214,7 @@ function setProductId(idProd){
             console.log(searchbar.value)
             
             for(let i=0; i<data.products.length; i++){
-                if(searchbar.value == data.products[i].name.toLowerCase()){
+                if(data.products[i].name.toLowerCase().includes(searchbar.value.toLowerCase())){
                     
                     divList.innerHTML = `
                     <div onclick="setProductId(${data.products[i].id})" class="list-group-item list-group-item-action cursor-active">
@@ -231,9 +231,9 @@ function setProductId(idProd){
                         <small class="text-muted">${data.products[i].soldCount} Vendidos</small>
                     </div>
                  ` 
-                } else if(searchbar.value === ""){
+                } else if(searchbar.value == ""){
                     
-                    
+            
                 }
             }
         })
