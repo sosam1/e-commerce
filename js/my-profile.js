@@ -19,12 +19,38 @@ let sNom = document.getElementById('snom')
 let pApe = document.getElementById('pape')
 let sApe = document.getElementById('sape')
 let mail = document.getElementById('mail')
-let btnFoto = document.getElementById('btn-foto')
 let telefono = document.getElementById('telefono')
 let btnEnviar = document.getElementById('btn-enviar')
-
+let btnFoto = document.getElementById('btn-foto')
 
 mail.value = user
+
+
+///////////////////////DESAFIATE////////////////////////////////    
+
+function mostrarImagen(event){
+    var imagenSource = event.target.result;
+    var previewImage = document.getElementById('imagen');
+
+    localStorage.setItem('Foto de Perfil', imagenSource)
+
+    previewImage.src = imagenSource;
+  }
+
+  function procesarArchivo(event){
+     var imagen = event.target.files[0];
+
+     var lector = new FileReader();
+
+     lector.addEventListener('load', mostrarImagen, false);
+
+     lector.readAsDataURL(imagen);
+
+  }
+
+  document.getElementById('btn-foto').addEventListener('change', procesarArchivo, false)
+
+
 
 btnEnviar.addEventListener('click', function(e){
 
@@ -72,11 +98,14 @@ let newApellido = localStorage.getItem('apellido')
 let newSapellido = localStorage.getItem('sApellido')
 let newEmail = localStorage.getItem('email')
 let newTelefono = localStorage.getItem('telefono')
-
-
+let fotoDePerfil = localStorage.getItem('Foto de Perfil')
+let previewImage = document.getElementById('imagen');
 
     pNom.value = newNombre
     sNom.value = newSnombre
     pApe.value = newApellido 
-    sApe.value = newSapellido 
-    telefono.value = newTelefono 
+    sApe.value = newSapellido
+    mail.value = newEmail 
+    telefono.value = newTelefono
+    previewImage.src = fotoDePerfil; 
+
